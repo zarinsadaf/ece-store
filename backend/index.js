@@ -1,7 +1,7 @@
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
 require('dotenv').config()
@@ -9,30 +9,42 @@ require('dotenv').config()
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://book-app-frontend-tau.vercel.app'],
+    origin: ['http://localhost:5173'],
     credentials: true
 }))
 
 // routes
-const bookRoutes = require('./src/books/book.route');
+const merchandiseRoutes = require('./src/merchandises/merchandise.route');
 const orderRoutes = require("./src/orders/order.route")
 const userRoutes =  require("./src/users/user.route")
 const adminRoutes = require("./src/stats/admin.stats")
 
-app.use("/api/books", bookRoutes)
+app.use("/api/merchandises", merchandiseRoutes)
 app.use("/api/orders", orderRoutes)
 app.use("/api/auth", userRoutes)
 app.use("/api/admin", adminRoutes)
+app.use(express.json());
+// MongoDB Connection
+console.log("Starting server...");
+console.log("Environment:", process.env.NODE_ENV || 'development');
+console.log("Port:", port);
+console.log("MongoDB URL:", process.env.DB_URL);
 
-async function main() {
-  await mongoose.connect(process.env.DB_URL);
-  app.use("/", (req, res) => {
-    res.send("Book Store Server is running!");
+// Connect to MongoDB
+mongoose.connect(process.env.DB_URL)
+  .then(() => {
+    console.log('MongoDB Connected Successfully!');
+    // Start the server only after successful database connection
+    app.listen(port, () => {
+      console.log(`Backend server is running on port ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error('MongoDB Connection Error:', error);
+    process.exit(1);
   });
-}
 
-main().then(() => console.log("Mongodb connect successfully!")).catch(err => console.log(err));
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// Basic route to test server
+app.get("/", (req, res) => {
+    res.send("ECE Store Server is running!");
 });

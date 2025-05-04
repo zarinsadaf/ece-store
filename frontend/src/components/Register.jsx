@@ -79,7 +79,7 @@ const Register = () => {
             </button>
         </div>
 
-        <p className='mt-5 text-center text-gray-500 text-xs'>©2025 Book Store. All rights reserved.</p>
+        <p className='mt-5 text-center text-gray-500 text-xs'>©2025 ECE Official Merchandise Store. All rights reserved.</p>
     </div>
 </div>
   )

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const Order = require('../orders/order.model');
-const Book = require('../books/book.model');
+const Merchandise = require('../merchandises/merchandise.model');
 const router = express.Router();
 
 
@@ -21,17 +21,17 @@ router.get("/", async (req, res) => {
             }
         ]);
 
-        // 4. Trending books statistics: 
-        const trendingBooksCount = await Book.aggregate([
+        // 4. Trending  statistics: 
+        const trendingMerchandiseCount = await Merchandise.aggregate([
             { $match: { trending: true } },  // Match only trending books
-            { $count: "trendingBooksCount" }  // Return the count of trending books
+            { $count: "trendingMerchandiseCount" }  // Return the count of trending books
         ]);
         
         // If you want just the count as a number, you can extract it like this:
-        const trendingBooks = trendingBooksCount.length > 0 ? trendingBooksCount[0].trendingBooksCount : 0;
+        const trendingMerchandise = trendingMerchandiseCount.length > 0 ? trendingMerchandiseCount[0].trendingMerchandiseCount : 0;
 
-        // 5. Total number of books
-        const totalBooks = await Book.countDocuments();
+        // 5. Total number of merchandise
+        const totalMerchandise = await Merchandise.countDocuments();
 
         // 6. Monthly sales (group by month and sum total sales for each month)
         const monthlySales = await Order.aggregate([
@@ -48,8 +48,8 @@ router.get("/", async (req, res) => {
         // Result summary
         res.status(200).json({  totalOrders,
             totalSales: totalSales[0]?.totalSales || 0,
-            trendingBooks,
-            totalBooks,
+            trendingMerchandise,
+            totalMerchandise,
             monthlySales, });
       
     } catch (error) {

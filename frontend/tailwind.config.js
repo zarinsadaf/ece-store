@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#FFCE1A',
-        'secondary' : "#0D0842",
+        'primary': '#377DFF',
+        'secondary' : '#EBF8FF',
         'blackBG': '#F3F3F3',
-        'Favorite': '#FF5841'
+        'Favorite': "#FFFBEB"
       }, 
       fontFamily: {
         'primary' : ["Montserrat", "sans-serif"],

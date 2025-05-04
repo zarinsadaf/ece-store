@@ -3,18 +3,18 @@ import App from "../App";
 import Home from "../pages/home/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
-import CartPage from "../pages/books/CartPage";
-import CheckoutPage from "../pages/books/CheckoutPage";
-import SingleBook from "../pages/books/SingleBook";
+import CartPage from "../pages/merchandises/CartPage";
+import CheckoutPage from "../pages/merchandises/CheckoutPage";
+import SingleMerchandise from "../pages/merchandises/SingleMerchandise";
 import PrivateRoute from "./PrivateRoute";
-import OrderPage from "../pages/books/OrderPage";
+import OrderPage from "../pages/merchandises/OrderPage";
 import AdminRoute from "./AdminRoute";
 import AdminLogin from "../components/AdminLogin";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
-import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
-import AddBook from "../pages/dashboard/addBook/AddBook";
-import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
+import ManageMerchandise from "../pages/dashboard/manageMerchandise/ManageMerchandise";
+import AddMerchandise from "../pages/dashboard/addMerchandise/AddMerchandise";
+import UpdateMerchandise from "../pages/dashboard/EditMerchandise/UpdateMerchandise";
 import UserDashboard from "../pages/dashboard/users/UserDashboard";
 
 const router = createBrowserRouter([
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
           element: <PrivateRoute><CheckoutPage/></PrivateRoute>
         },
         {
-          path: "/books/:id",
-          element: <SingleBook/>
+          path: "/merchandises/:id",
+          element: <SingleMerchandise/>
         },
         {
           path: "/user-dashboard",
@@ -76,21 +76,21 @@ const router = createBrowserRouter([
           element: <AdminRoute><Dashboard/></AdminRoute>
         },
         {
-          path: "add-new-book",
+          path: "add-new-merchandise",
           element: <AdminRoute>
-            <AddBook/>
+            <AddMerchandise/>
           </AdminRoute>
         },
         {
-          path: "edit-book/:id",
+          path: "edit-merchandise/:id",
           element: <AdminRoute>
-            <UpdateBook/>
+            <UpdateMerchandise/>
           </AdminRoute>
         },
         {
-          path: "manage-books",
+          path: "manage-merchandise",
           element: <AdminRoute>
-            <ManageBooks/>
+            <ManageMerchandise/>
           </AdminRoute>
         }
       ]

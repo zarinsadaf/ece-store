@@ -1,24 +1,30 @@
-import React from 'react'
 
-import bannerImg from "../../assets/banner.png"
+import React from 'react';
+import bannerImg from "../../assets/ChampionBanner.jpg";
 
 const Banner = () => {
   return (
-    <div className='flex flex-col md:flex-row-reverse py-16 justify-between items-center gap-12'>
-         <div className='md:w-1/2 w-full flex items-center md:justify-end'>
-            <img src={bannerImg} alt="" />
-        </div>
-        
-        <div className='md:w-1/2 w-full'>
-            <h1 className='md:text-5xl text-2xl font-medium mb-7'>New Releases This Week</h1>
-            <p className='mb-10'>It's time to update your reading list with some of the latest and greatest releases in the literary world. From heart-pumping thrillers to captivating memoirs, this week's new releases offer something for everyone</p>
+    <div className="w-full flex flex-col items-center justify-center">
+      
+      {/* Full-width banner image */}
+      <div className="w-full">
+        <img 
+          src={bannerImg} 
+          alt="Champion Banner"
+          className="w-full h-[700px] object-cover"
+        />
+      </div>
 
-            <button className='btn-primary'>Subscribe</button>
-        </div>
+      {/* Text section below the image */}
+      <div className="max-w-4xl px-6 py-12 text-center">
+        <h1 className="text-3xl md:text-5xl font-semibold mb-6">We Will Rock You</h1>
+        <p className="text-base md:text-lg mb-8">
+        Welcome to the Official Merchandise Store of the Prestigious Electronics & Communication Engineering Discipline of Khulna University.
+        </p>
+      </div>
 
-       
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
